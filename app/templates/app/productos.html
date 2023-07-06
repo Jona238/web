@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block js %}
+<script src="{% static 'script.js' %}"></script>
+{% endblock  %}
+
+{% block css %}
+
+<link rel="stylesheet" href="styles.css" />
+
+{% endblock %}
+
+{% block contenido %}
+
+{% load humanize %}
+
+<section class="container top-products">
+{% for p in productos %}
+				
+<!-- Producto 5 -->
+<div class="card-product">
+    <div class="container-img">
+        {% if p.imagen %}
+        <img src="{{ p.imagen.url }}" alt="imagen producto" />
+        {% endif %}
+        <h5>{{p.marca | capfirst}}</h5>
+        <div class="button-group">
+            <span>
+                <i class="fa-regular fa-eye"></i>
+            </span>
+            <span>
+                <i class="fa-regular fa-heart"></i>
+            </span>
+            <span>
+                <i class="fa-solid fa-code-compare"></i>
+            </span>
+        </div>
+    </div>
+    <div class="content-card-product">
+        <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </div>
+        <h3>{{ p.nombre_producto | title}} </h3>
+
+        <a href="{% url 'addtocar' p.codigo %}" class="add-cart" data-id="1"><i class="fa-solid fa-basket-shopping">Agregar al carro</i></a>
+        <p class="price">${{ p.precio | intcomma }}</p>
+        <span class="stock">Quedan 
+            {{ p.Stock }} unidades</span>
+    </div>
+</div>
+{% endfor %}
+
+</section>
+{% endblock %}

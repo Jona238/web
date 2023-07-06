@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+
+
+{% block js %}
+
+
+{% endblock %}
+
+
+{% block contenido%}
+
+
+{% load humanize %}
+
+
+<div class="container" id="about">
+    <h1 style="text-align-last: center;">QUIENES SOMOS</h1>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-md-6 py-3 py-md-0">
+            <h1 style=" font-size:x-large; text-align: center;" >MISIÓN</h1>
+            <p style="font-size: x-large;"
+            >Contribuimos a crear un mundo mejor, ayudando a amar y proteger a sus mascotas. Basados en nuestro equipo de trabajo somos solidarios socialmente, brindando la mayor cantidad de trabajo posible, innovando constantemente y logrando un prestigio que nos haga perdurar en el tiempo. Invirtiendo e innovando en proyectos para ampliar la estructura y seguir creciendo en otras ciudades. Aportando y participando solidariamente para crear una comunidad inclusiva y el cuidado del medio ambiente.</p>
+            <br>
+            <br>
+            <br>
+
+
+            <div style= "display: flex;">
+                <img src="{% static 'app/img/logo_perro.png' %}" alt="" height="200px" width="200px">
+            </div>
+
+
+            <h1 style="font-size:x-large; text-align: center;" >VISIÓN</h1>
+            <p style="font-size: x-large;">Ser una empresa moderna y sólida, líder en el país y con proyección internacional. Liderada por un equipo con acceso a la más alta calidad de capacitación y con una mirada colaborativa e inclusiva.</p>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

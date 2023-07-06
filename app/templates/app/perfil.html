@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+
+{% block contenido %}
+<div class="card">
+    <div class="card-body">
+<h1 class="heading-pag"><span>Mis compras</span></h1> 
+<section id="historial">
+    <table class="table table-striped table-hover table-responsive-sm">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>FECHA</th>
+                <th>TOTAL</th>
+                <th>ESTADO</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fila in compras %}
+            <tr>
+                <td>{{fila.id}}</td>
+                <td>{{fila.fecha}}</td>
+                <td>${{fila.total}}</td>
+                <td>{{fila.estado}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if not compras %}
+        <h2 class="vacio-carrito">Aún no tienes compras realizadas!.</h2>
+    {% endif %}
+</section>
+
+<div>
+<div>
+{% endblock %}

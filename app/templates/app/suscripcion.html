@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+{% endblock %}
+
+{% block contenido %}
+    {% load crispy_forms_tags %}
+        <h1>Suscribete a la fundación</h1>
+        <section>
+            {% if suscrito %}
+                <h3>Felicidades estas suscrito.</h3>
+                <small>Disfruta de los beneficios!!</small>
+            {% else %}
+                <h3>Los Beneficios de Suscribirte</h3>
+                <p>Con tu suscripcion ayudaras que los animales esten mejor cuidados y vien alientados</p>
+                <br>
+                <form action="{% url 'suscribir' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Suscribete</button>
+                </form>
+            {% endif %}
+        </section>
+
+
+
+{% endblock %}    

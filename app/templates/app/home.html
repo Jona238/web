@@ -1,0 +1,220 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block css %}
+
+<link rel="stylesheet" href="styles.css" />
+
+{% endblock %}
+
+{% block js %}
+
+<script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+{% block contenido%}
+
+{% load humanize %}
+	<!--slider-->
+	<section>
+		<div class="slider">
+			<ul>
+				<li><img src="{% static 'app/img/slider2-2.jpg' %}"></li>
+				<li><img src="{% static 'app/img/slider2-3.jpg' %}"></li>
+				<li><img src="{% static 'app/img/slider2-4.jpg' %}"></li>
+				<li><img src="{% static 'app/img/slider2-5.webp' %}"></li>
+				<li><img src="{% static 'app/img/slider2.jpg' %}"></li>
+			</ul>
+		</div>
+	</section>
+	<!--slider-->
+	<main class="main-content">
+		<section class="container container-features">
+			<div class="card-feature">
+				<i class="fa-solid fa-plane-up"></i>
+				<div class="feature-content">
+					<span>Envío gratuito </span>
+					<p>En pedido superior a $1500</p>
+				</div>
+			</div>
+			<div class="card-feature">
+				<i class="fa-solid fa-wallet"></i>
+				<div class="feature-content">
+					<span>Reembolso</span>
+					<p>100% garantía de devolución de dinero</p>
+				</div>
+			</div>
+			<div class="card-feature">
+				<i class="fa-solid fa-gift"></i>
+				<div class="feature-content">
+					<span>Tarjeta regalo especial</span>
+					<p>Ofrece bonos especiales con regalo</p>
+				</div>
+			</div>
+			<div class="card-feature">
+				<i class="fa-solid fa-headset"></i>
+				<div class="feature-content">
+					<span>Servicio al cliente 24/7</span>
+					<p>LLámenos 24/7 al +56976459802</p>
+				</div>
+			</div>
+		</section>
+
+
+		<h1 class="heading-1">Mejores Productos</h1>
+		<section class="container top-products">
+			
+
+			<!-- <div class="container-options">
+				<span class="active">Destacados</span>
+				<span>Más recientes</span>
+				<span>Mejores Vendidos</span>
+			</div> -->
+
+            
+			<main class="main-content"></main>
+
+                {% for p in productos %}
+				
+				<!-- Producto 5 -->
+				<div class="card-product">
+					<div class="container-img">
+                        {% if p.imagen %}
+						<img src="{{ p.imagen.url }}" alt="imagen producto" />
+						{% endif %}
+                        <h5>{{p.marca | capfirst}}</h5>
+                        <div class="button-group">
+							<span>
+								<i class="fa-regular fa-eye"></i>
+							</span>
+							<span>
+								<i class="fa-regular fa-heart"></i>
+							</span>
+							<span>
+								<i class="fa-solid fa-code-compare"></i>
+							</span>
+						</div>
+					</div>
+					<div class="content-card-product">
+						<div class="stars">
+							<i class="fa-solid fa-star"></i>
+							<i class="fa-solid fa-star"></i>
+							<i class="fa-solid fa-star"></i>
+							<i class="fa-solid fa-star"></i>
+							<i class="fa-regular fa-star"></i>
+						</div>
+						<h3>{{ p.nombre_producto | title}} </h3>
+						<a href="{% url 'addtocar' p.codigo %}" class="add-cart" data-id="1"><i class="fa-solid fa-basket-shopping">Agregar al carro</i></a>
+						<p class="price">${{ p.precio | intcomma }}</p>
+						<span class="stock">Quedan {{ p.Stock }} unidades</span>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+		</section>
+
+		<section class="container top-categories">
+			<h1 class="heading-1">Categorías</h1>
+			<div class="container-categories">
+				<div class="card-category category-x1">
+					<p>Alimentos</p>
+					<span>Ver más</span>
+				</div>
+				<div class="card-category category-x2">
+					<p>Juguetes</p>
+					<span>Ver más</span>
+				</div>
+				<div class="card-category category-x3">
+					<p>Outlet</p>
+					<span>Ver más</span>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="container specials">
+			<h1 class="heading-1">Especiales</h1>
+
+			<div class="container-products">
+				
+				
+			</div>
+		</section>
+
+		<section class="container blogs">
+			<h1 class="heading-1">Últimos Blogs</h1>
+
+			<div class="container-blogs">
+				<div class="card-blog">
+					<div class="container-img">
+						<img src="{% static 'app/img/perro_mojado.jpg' %}" alt="Imagen Blog 1" />
+						<div class="button-group-blog">
+							<span>
+								<i class="fa-solid fa-magnifying-glass"></i>
+							</span>
+							<span>
+								<i class="fa-solid fa-link"></i>
+							</span>
+						</div>
+					</div>
+					<div class="content-blog">
+						<h3>Descubre cómo refrescar a un perro en verano</h3>
+						<span>29 Noviembre 2022</span>
+						<p>
+							Descubre los consejos para refrescar a un perro en verano y los productos que le ayudarán a
+							sobrellevar las altas temperaturas.
+						</p>
+						<a href="{% url 'noticia_uno' %}" class="btn-read-more">Leer más</a>
+					</div>
+				</div>
+				<div class="card-blog">
+					<div class="container-img">
+						<img src="{% static 'app/img/gato_maleta.jpg' %}" alt="Imagen Blog 2" />
+						<div class="button-group-blog">
+							<span>
+								<i class="fa-solid fa-magnifying-glass"></i>
+							</span>
+							<span>
+								<i class="fa-solid fa-link"></i>
+							</span>
+						</div>
+					</div>
+					<div class="content-blog">
+						<h3>Los mejores transportines para gatos</h3>
+						<span>20 Enero 2023</span>
+						<p>
+							En AnimalHouse te dejamos esta guía para que elijas el mejor transportín para tu gato
+							atendiendo a vuestras necesidades y planes de vacaciones para que no vuelvas a viajar sin la
+							compañía de tu peludo.
+						</p>
+						<a  href="{% url 'noticia_dos' %}" class="btn-read-more">Leer más</a>
+					</div>
+				</div>
+				<div class="card-blog">
+					<div class="container-img">
+						<img src="{% static 'app/img/adiestramiento.jpg' %}" alt="Imagen Blog 3" />
+						<div class="button-group-blog">
+							<span>
+								<i class="fa-solid fa-magnifying-glass"></i>
+							</span>
+							<span>
+								<i class="fa-solid fa-link"></i>
+							</span>
+						</div>
+					</div>
+					<div class="content-blog">
+						<h3>Adiestramiento canino en Chile</h3>
+						<span>11 Mayo 2023</span>
+						<p>
+							La educación es una parte esencial del cuidado de nuestras mascotas, encuentra aquí los
+							mejores adiestradores caninos en Chile.
+						</p>
+						<a href="{% url 'noticia_tres' %}" class="btn-read-more">Leer más</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	
+{% endblock %}
